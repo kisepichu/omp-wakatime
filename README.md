@@ -34,6 +34,8 @@ Restart omp. Upgrade with `omp plugin upgrade omp-wakatime`.
 
 Every heartbeat uses category `ai coding` and `--project-folder <cwd>`. Failed tool calls send nothing, and nothing is sent until the session has touched a file. Non-write heartbeats for the same file are sent at most once every 2 minutes. wakatime-cli runs detached, so heartbeats never delay tool calls, and it logs its own errors to `~/.wakatime/wakatime.log`.
 
+wakatime-cli also parses AI transcripts on disk (omp's included) on each call, and adds what it finds as extra heartbeats. Among them are `OMP <session>` app heartbeats, which have no language, so Wakapi versions that count app heartbeats show them as language `Unknown`. Setting `sync_ai_disabled = true` in `~/.wakatime.cfg` stops that parsing, but wakatime-cli then also drops every `ai coding` heartbeat, this plugin's included.
+
 ## Development
 
 ```bash

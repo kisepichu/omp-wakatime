@@ -57,6 +57,7 @@ export default function wakatime(pi: ExtensionAPI) {
     }
     if (!cli) return;
 
+    // No --sync-ai-disabled: wakatime-cli treats it as "AI tracking off" and drops every "ai coding" heartbeat.
     const args = ["--entity", activity.file, "--category", "ai coding", "--plugin", plugin, "--project-folder", cwd];
     if (activity.write) args.push("--write");
     if (activity.aiLineChanges !== undefined) args.push("--ai-line-changes", String(activity.aiLineChanges));
