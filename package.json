@@ -1,6 +1,6 @@
 {
   "name": "omp-wakatime",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "WakaTime/Wakapi heartbeats from oh-my-pi (omp) with per-file entities",
   "license": "MIT",
   "type": "module",
