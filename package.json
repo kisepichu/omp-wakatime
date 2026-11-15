@@ -1,0 +1,19 @@
+{
+  "name": "omp-wakatime",
+  "version": "0.1.0",
+  "description": "WakaTime/Wakapi heartbeats from oh-my-pi (omp) with per-file entities",
+  "license": "MIT",
+  "type": "module",
+  "repository": "github:kisepichu/omp-wakatime",
+  "omp": {
+    "extensions": ["./src/extension.ts"]
+  },
+  "scripts": {
+    "test": "bun test",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@types/bun": "^1.2.0",
+    "typescript": "^5.8.0"
+  }
+}
