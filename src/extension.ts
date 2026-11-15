@@ -4,7 +4,7 @@ import { arch, homedir, platform } from "node:os";
 import { delimiter, join } from "node:path";
 import { type FileActivity, Throttle, type ToolResult, fileActivity } from "./activity.ts";
 
-const VERSION = "0.1.0";
+const VERSION = "0.2.0";
 
 // Structural subset of omp's ExtensionAPI; avoids depending on the host package for types.
 interface Context {
@@ -57,8 +57,8 @@ export default function wakatime(pi: ExtensionAPI) {
     }
     if (!cli) return;
 
-    // No --sync-ai-disabled: wakatime-cli treats it as "AI tracking off" and drops every "ai coding" heartbeat.
-    const args = ["--entity", activity.file, "--category", "ai coding", "--plugin", plugin, "--project-folder", cwd];
+    // Category `coding`, not `ai coding`: with `sync_ai_disabled = true` wakatime-cli drops every `ai coding` heartbeat.
+    const args = ["--entity", activity.file, "--category", "coding", "--plugin", plugin, "--project-folder", cwd];
     if (activity.write) args.push("--write");
     if (activity.aiLineChanges !== undefined) args.push("--ai-line-changes", String(activity.aiLineChanges));
 
